@@ -3,8 +3,12 @@ using Reddit;
 using Reddit.Mapper;
 using System.Text.Json.Serialization;
 using Reddit.Middlewares;
+using Reddit.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
+//adding services to the container for model validation by zura
+
+builder.Services.AddControllers(options => options.Filters.Add<ModelValidationActionFilter>());
 
 // Add services to the container.
 
