@@ -6,19 +6,9 @@ using Reddit.Middlewares;
 using Reddit.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
-//adding services to the container for model validation by zura
+//Model Validation by Zura
 
 builder.Services.AddControllers(options => options.Filters.Add<ModelValidationActionFilter>());
-
-// Add services to the container.
-
-builder.Services.AddControllers().ConfigureApiBehaviorOptions(options =>
-{
-    options.SuppressModelStateInvalidFilter = true; 
-}).AddJsonOptions(options =>
-{
-    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
